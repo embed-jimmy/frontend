@@ -1,25 +1,17 @@
-import React from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { PropsWithChildren } from 'react'
+import { DevicesProvider } from './providers/DevicesProvider'
+import { Router } from './router'
+
+function Providers({ children }: PropsWithChildren<{}>) {
+  return <DevicesProvider>{children}</DevicesProvider>
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Providers>
+      <h1>Embed lab project</h1>
+      <Router />
+    </Providers>
   )
 }
 
