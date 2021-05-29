@@ -1,9 +1,10 @@
 import { PropsWithChildren } from 'react'
-import { DevicesProvider } from './providers/DevicesProvider'
+import { LoadingOverlay } from './components/LoadingOverlay'
+import { DeviceProvider } from './providers/DeviceProvider'
 import { Router } from './router'
 
 function Providers({ children }: PropsWithChildren<{}>) {
-  return <DevicesProvider>{children}</DevicesProvider>
+  return <DeviceProvider>{children}</DeviceProvider>
 }
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <Providers>
       <h1>Embed lab project</h1>
       <Router />
+      <LoadingOverlay />
     </Providers>
   )
 }

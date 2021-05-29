@@ -1,8 +1,14 @@
 export interface DeviceStateDto {
-  aircon: number
+  modified: number
   capacity: number
   count: number
-  light: true
+  airconOn: boolean
+  airconTemp: number
+  light1: boolean
+  light2: boolean
+  light3: boolean
+  light4: boolean
+  light5: boolean
 }
 
 export interface NetpieDataDto {
