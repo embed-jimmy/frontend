@@ -1,5 +1,5 @@
 export interface DeviceStateDto {
-  modified: number
+  changeId: number
   capacity: number
   count: number
   airconOn: boolean

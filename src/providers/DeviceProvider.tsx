@@ -48,7 +48,7 @@ export function DeviceProvider({ children }: DeviceProviderProps) {
       mutate((data) => {
         if (typeof data === 'undefined') return
         setLoading(true)
-        const newData = { ...callback(data), modified: new Date().getTime() }
+        const newData = { ...callback(data), changeId: new Date().getTime() }
         client.put('/updateDevice', newData)
         return { ...data, ...newData } as DeviceStateDto
       }, false)
@@ -60,7 +60,11 @@ export function DeviceProvider({ children }: DeviceProviderProps) {
     socket.on('message', (_, rawData) => {
       const data = rawData as DeviceStateDto
       mutate((oldData) => {
-        if (oldData && oldData.modified > data.modified) {
+        if (
+          oldData &&
+          data.changeId !== 0 &&
+          data.changeId < oldData.changeId
+        ) {
           return oldData
         }
         setLoading(false)
