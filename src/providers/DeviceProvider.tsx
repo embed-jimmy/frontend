@@ -11,12 +11,12 @@ import {
 import useSWR, { SWRConfig, SWRResponse } from 'swr'
 import { DeviceStateDto } from '../types/netpie'
 import { io } from 'socket.io-client'
+import { Loading } from '../components/Loading'
 
 export type UpdateData = Partial<DeviceStateDto>
 export type UpdateCallback = (data: DeviceStateDto) => UpdateData
 
 interface IDevice {
-  loading: boolean
   device: SWRResponse<DeviceStateDto, any>
   updateDevice: (callback: UpdateCallback) => void
 }
@@ -72,9 +72,8 @@ export function DeviceProvider({ children }: DeviceProviderProps) {
     }
   }, [mutate])
   return (
-    <DeviceContext.Provider
-      value={{ loading, device: swrResponse, updateDevice }}
-    >
+    <DeviceContext.Provider value={{ device: swrResponse, updateDevice }}>
+      {loading ? <Loading /> : null}
       <SWRConfig value={{ fetcher }}>{children}</SWRConfig>
     </DeviceContext.Provider>
   )

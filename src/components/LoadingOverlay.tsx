@@ -1,11 +1,18 @@
-import { useDeviceContext } from '../providers/DeviceProvider'
+import { useEffect } from 'react'
+import NProgress from 'nprogress'
+import { useLoadingContext } from '../providers/LoadingProvider'
+
+import '../nprogress.css'
 
 export function LoadingOverlay() {
-  const { loading } = useDeviceContext()
-  console.log(loading)
-  if (loading) {
-    return <div style={{ position: 'fixed', top: 0, left: 0 }}>Loading...</div>
-  } else {
-    return null
-  }
+  const { loadingCount } = useLoadingContext()
+  const isLoading = loadingCount > 0
+  useEffect(() => {
+    if (!isLoading) return
+    NProgress.start()
+    return () => {
+      NProgress.done()
+    }
+  }, [isLoading])
+  return null
 }
