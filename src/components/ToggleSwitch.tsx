@@ -1,3 +1,4 @@
+import { Box, Button, Card, CardContent, Typography } from '@material-ui/core'
 import { useCallback } from 'react'
 import { useDeviceContext } from '../providers/DeviceProvider'
 import { DeviceStateDto } from '../types/netpie'
@@ -25,10 +26,19 @@ export function ToggleSwitch({ applianceKey, label }: ToggleSwitchProps) {
     })
   }, [updateDevice, applianceKey])
   return (
-    <>
-      <b>{label}: </b>
-      <button onClick={toggleStatus}>{currentStatus ? 'On' : 'Off'}</button>
-      <br />
-    </>
+    <Card style={{ marginBottom: 16 }}>
+      <CardContent style={{ paddingBottom: 16 }}>
+        <Box display="flex" alignItems="center">
+          <Typography variant="h6">{label}</Typography>
+          <Box flex={1} />
+          <Button
+            onClick={toggleStatus}
+            variant={currentStatus ? 'contained' : 'text'}
+          >
+            {currentStatus ? 'On' : 'Off'}
+          </Button>
+        </Box>
+      </CardContent>
+    </Card>
   )
 }
