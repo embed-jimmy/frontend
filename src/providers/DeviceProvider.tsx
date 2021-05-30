@@ -56,7 +56,7 @@ export function DeviceProvider({ children }: DeviceProviderProps) {
     [client, mutate]
   )
   useEffect(() => {
-    const socket = io(apiUrl)
+    const socket = io(apiUrl, { transports: ['polling'] })
     socket.on('message', (_, rawData) => {
       const data = rawData as DeviceStateDto
       mutate((oldData) => {
