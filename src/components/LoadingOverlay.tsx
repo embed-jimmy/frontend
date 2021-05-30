@@ -9,8 +9,9 @@ export function LoadingOverlay() {
   const isLoading = loadingCount > 0
   useEffect(() => {
     if (!isLoading) return
-    NProgress.start()
+    const timeout = setTimeout(() => NProgress.start(), 1000)
     return () => {
+      clearTimeout(timeout)
       NProgress.done()
     }
   }, [isLoading])
