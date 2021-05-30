@@ -6,6 +6,7 @@ import {
 } from '@material-ui/core'
 import styled from '@emotion/styled'
 import { useDeviceContext } from '../providers/DeviceProvider'
+import { CapacityDialog } from './CapacityDialog'
 
 const PeopleBar = styled(LinearProgress)`
   height: 16px;
@@ -27,9 +28,11 @@ export function PeopleCount() {
         <Typography variant="h5">People Count</Typography>
         <Typography variant="h3" color="primary">
           {count}
-          <Typography variant="h5" component="span">
-            /{capacity}
-          </Typography>
+          <CapacityDialog>
+            <Typography variant="h5" component="span">
+              /{capacity}
+            </Typography>
+          </CapacityDialog>
         </Typography>
         <PeopleBar variant="determinate" value={(count / capacity) * 100} />
       </CardContent>
