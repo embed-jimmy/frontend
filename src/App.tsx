@@ -3,9 +3,9 @@ import { PropsWithChildren } from 'react'
 import { LoadingOverlay } from './components/LoadingOverlay'
 import { DeviceProvider } from './providers/DeviceProvider'
 import { LoadingProvider } from './providers/LoadingProvider'
-import { Router } from './router'
 import { theme } from './utils/theme'
 import styled from '@emotion/styled'
+import { DeviceDashboardPage } from './pages/dashboard'
 
 function Providers({ children }: PropsWithChildren<{}>) {
   return (
@@ -26,7 +26,7 @@ function App() {
     <Providers>
       <Container maxWidth="md">
         <AppTitle>Embed lab project</AppTitle>
-        <Router />
+        <DeviceDashboardPage />
         <LoadingOverlay />
       </Container>
     </Providers>
