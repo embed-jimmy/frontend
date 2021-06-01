@@ -25,7 +25,7 @@ function App() {
   return (
     <Providers>
       <Container maxWidth="md">
-        <AppTitle>Embed lab project</AppTitle>
+        <AppTitle>Distancing Counter</AppTitle>
         <DeviceDashboardPage />
         <LoadingOverlay />
       </Container>

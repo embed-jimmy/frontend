@@ -29,7 +29,7 @@ export function DeviceDashboardPage() {
   }
   return (
     <div>
-      <h2>Classroom</h2>
+      <h2>Main Room</h2>
       <PeopleCount />
       <Box
         display={{ xs: 'none', sm: 'grid' }}

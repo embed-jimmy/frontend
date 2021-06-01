@@ -33,7 +33,7 @@ jobs:
         run: yarn build
 
       - name: Create CNAME file
-        run: echo "embed-lab-project.suphon.dev" > build/CNAME
+        run: echo "dcounter.suphon.dev" > build/CNAME
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
